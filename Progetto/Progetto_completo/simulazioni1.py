@@ -99,7 +99,7 @@ def gestione_elettroni(sciame_em, val, E_c_elettrone, Perdita_ionizz,nuove_parti
 def gestione_fotoni(sciame_em, val,nuove_particelle):
   
     """
-    Descrive il comportamento dei fotoni in virtù di quella che è la loro energia, includendo fenomeni come la produzione di coppie e la ionizzazione.
+    Descrive il comportamento dei fotoni in virtù di quella che è la loro energia, includendo fenomeni di produzione di coppie di ionizzazione.
     Parametri
     -----------
        sciame_em (Oggetto InsiemeParticelle): è l'insieme di particelle contenente la lista di fotoni sulla copia della quale scorro.
@@ -109,7 +109,7 @@ def gestione_fotoni(sciame_em, val,nuove_particelle):
     
     Restituisce
     -----------
-       E_step (float) ossia l'energia persa per ionizzazione e aggiorna l'oggetto di InsiemeParticelle
+       E_step (float) ossia l'energia persa per ionizzazione e aggiorna sia l'oggetto di InsiemeParticelle che nuove_particelle
     """
 
 
