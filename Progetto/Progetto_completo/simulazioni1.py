@@ -50,13 +50,13 @@ def gestione_elettroni(sciame_em, val, E_c_elettrone, Perdita_ionizz,nuove_parti
        sciame_em (Oggetto InsiemeParticelle): è l'insieme di particelle contenente la lista di elettroni sulla copia della quale scorro.
        val (float): passo di avanzamento della simulazione (tra 0 e 1).
        E_c_elettrone (float): energia critica del materiale per gli elettroni.
-       Perdita_ionizz (float): l'energia persa per ionizzazione in una lunghezza di radiazione
-       nuove_particelle (lista di oggetti di Particella): lista che raccoglie le particelle originate da una gestione 
+       Perdita_ionizz (float): l'energia persa per ionizzazione in una lunghezza di radiazione.
+       nuove_particelle (lista di oggetti di Particella): lista che raccoglie le particelle originate da una gestione.
         
     
     Restituisce
     -----------
-       E_step (float) ossia l'energia persa per ionizzazione e aggiorna sia l'oggetto di InsiemeParticelle che nuove_particelle
+       E_step (float) ossia l'energia persa per ionizzazione e aggiorna sia l'oggetto di InsiemeParticelle che nuove_particelle.
     """
 
   
@@ -104,12 +104,12 @@ def gestione_fotoni(sciame_em, val,nuove_particelle):
     -----------
        sciame_em (Oggetto InsiemeParticelle): è l'insieme di particelle contenente la lista di fotoni sulla copia della quale scorro.
        val (float): passo di avanzamento della simulazione (tra 0 e 1).
-       nuove_particelle (lista di oggetti Particella): lista che raccoglie le particelle originate dalla gestione
+       nuove_particelle (lista di oggetti Particella): lista che raccoglie le particelle originate dalla gestione.
         
     
     Restituisce
     -----------
-       E_step (float) ossia l'energia persa per ionizzazione e aggiorna sia l'oggetto di InsiemeParticelle che nuove_particelle
+       E_step (float) ossia l'energia persa per ionizzazione e aggiorna sia l'oggetto di InsiemeParticelle che nuove_particelle.
     """
 
 
@@ -144,18 +144,18 @@ def gestione_fotoni(sciame_em, val,nuove_particelle):
 #POSITRONI:
 def gestione_positroni(sciame_em, val, E_c_positrone, Perdita_ionizz,nuove_particelle):
     """
-    Descrive il comportamento dei positroni in virtù di quella che è la loro energia, includendo fenomeni come la bremsstrahlung e la ionizzazione.
+    Descrive il comportamento dei positroni in virtù di quella che è la loro energia, includendo fenomeni di bremsstrahlung e di ionizzazione.
     Parametri
     -----------
        sciame_em (Oggetto InsiemeParticelle): è l'insieme di particelle contenente la lista di positroni sulla copia della quale scorro.
        val (float): passo di avanzamento della simulazione (tra 0 e 1).
        E_c_positrone (float): energia critica del materiale per i positroni.
-       Perdita_ionizz (float): l'energia persa per ionizzazione in una lunghezza di radiazione
-       nuove_particelle (lista di oggetti Particella): lista che raccoglie le particelle originate
+       Perdita_ionizz (float): l'energia persa per ionizzazione in una lunghezza di radiazione.
+       nuove_particelle (lista di oggetti Particella): lista che raccoglie le particelle originate.
     
     Restituisce
     -----------
-       E_step (float) ossia l'energia persa per ionizzazione e aggiorna l'oggetto di InsiemeParticelle
+       E_step (float) ossia l'energia persa per ionizzazione e aggiorna sia l'oggetto di InsiemeParticelle che nuove_particelle.
     """
 
 
@@ -219,19 +219,19 @@ def simula_sciame(energia_iniziale, val, E_c_elettrone, E_c_positrone, Perdita_i
     
     Parametri
     -----------
-    energia_iniziale (float): energia dell'elettrone che dà origine allo sciame
-    val (float): passo di avanzamento della simulazione (tra 0 e 1)
-    E_c_elettrone (float): energia critica del materiale per gli elettroni
-    E_c_positrone (float): energia critica del materiale per i positroni
-    Perdita_ionizz (float): energia persa per ionizzazione in una lunghezza di radiazione
-    stampa (bool): se True, stampa informazioni intermedie
+    energia_iniziale (float): energia dell'elettrone che dà origine allo sciame.
+    val (float): passo di avanzamento della simulazione (tra 0 e 1).
+    E_c_elettrone (float): energia critica del materiale per gli elettroni.
+    E_c_positrone (float): energia critica del materiale per i positroni.
+    Perdita_ionizz (float): energia persa per ionizzazione in una lunghezza di radiazione.
+    stampa (bool): se True, stampa informazioni intermedie.
     
     Restituisce
     -----------
-    ion_loss (float): energia totale persa per ionizzazione
-    energy_count (list): energie perse a ogni step
-    count_vector (list): numero di particelle a ogni step (rappresenta l'evoluzione dello sciame)
-    step (list): lista indici step
+    ion_loss (float): energia totale persa per ionizzazione.
+    energy_count (list): energie perse a ogni step.
+    count_vector (list): numero di particelle a ogni step (rappresenta l'evoluzione dello sciame).
+    step (list): lista degli step.
     """
     #creo un oggetto di InsiemeParticelle
     sciame_em = fc.InsiemeParticelle()
@@ -282,7 +282,7 @@ def simula_sciame(energia_iniziale, val, E_c_elettrone, E_c_positrone, Perdita_i
       E_step += gestione_positroni(sciame_em, val, E_c_positrone, Perdita_ionizz,nuove_particelle)
       E_step += gestione_fotoni(sciame_em, val,nuove_particelle)
 
-      #questa energia persa (calcolata all'iterazione n sarà da associare alla profondità dello step n+1)---->a 0 cm altrimenti l'eletrone avrebbe già perso energia
+      #questa energia persa (calcolata all'iterazione n sarà da associare alla profondità n+1)---->a 0 cm altrimenti l'eletrone avrebbe già perso energia
       energy_count.append(E_step) 
       ion_loss += E_step
 
@@ -314,15 +314,15 @@ def simulazione_materiali(E_in_list, val, E_c_elettrone, E_c_positrone, Perdita_
        val (float): passo di avanzamento della simulazione (tra 0 e 1).
        E_c_elettrone (float): energia critica del materiale per gli elettroni.
        E_c_positrone (float): energia critica del materiale per i positroni.
-       Perdita_ionizz (float): l'energia persa per ionizzazione in una lunghezza di radiazione
-       num_simulazioni (int): è il numero sciami da simulare per uno stesso valore di energia nella lista E_in_list
-       stampa (bool): se True permette di attivare le stampe intermedie per controllare l'andamento dello sciame
+       Perdita_ionizz (float): l'energia persa per ionizzazione in una lunghezza di radiazione.
+       num_simulazioni (int): è il numero sciami da simulare per uno stesso valore di energia nella lista E_in_list.
+       stampa (bool): se True permette di attivare le stampe intermedie per controllare l'andamento dello sciame.
         
     
     Restituisce
     -----------
       - numero_particelle_energie (lista di liste di liste di int), contiene un numero pari a len(E_in_list) di sotto-liste ciascuna con dimensione num_simulazioni e contenente delle sotto-liste che rappresentano ciascuna l'andamento del numero di particelle di un singolo sciame simulato. 
-      - ion_loss_energie (lista di liste di float), contiene un numero pari a len(E_in_list) di sotto-liste ciascuna con dimensione num_simulazioni e contenente i valori di energia persa per ionizzazione in tutti gli sciami simulati
+      - ion_loss_energie (lista di liste di float), contiene un numero pari a len(E_in_list) di sotto-liste ciascuna con dimensione num_simulazioni e contenente i valori di energia persa per ionizzazione in tutti gli sciami simulati.
     """
 
     #creo liste per i risultati finali
