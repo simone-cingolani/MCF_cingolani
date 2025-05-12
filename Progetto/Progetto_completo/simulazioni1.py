@@ -44,7 +44,7 @@ def coppia(s):
 
 def gestione_elettroni(sciame_em, val, E_c_elettrone, Perdita_ionizz,nuove_particelle):
     """
-    Descrive il comportamento degli elettroni in virtù di quella che è la loro energia, includendo fenomeni come la bremsstrahlung e la ionizzazione.
+    Descrive il comportamento degli elettroni in virtù di quella che è la loro energia, includendo fenomeni di bremsstrahlung e ionizzazione.
     Parametri
     -----------
        sciame_em (Oggetto InsiemeParticelle): è l'insieme di particelle contenente la lista di elettroni sulla copia della quale scorro.
@@ -56,7 +56,7 @@ def gestione_elettroni(sciame_em, val, E_c_elettrone, Perdita_ionizz,nuove_parti
     
     Restituisce
     -----------
-       E_step (float) ossia l'energia persa per ionizzazione e aggiorna l'oggetto di InsiemeParticelle
+       E_step (float) ossia l'energia persa per ionizzazione e aggiorna sia l'oggetto di InsiemeParticelle che nuove_particelle
     """
 
   
