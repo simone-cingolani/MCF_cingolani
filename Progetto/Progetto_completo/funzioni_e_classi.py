@@ -27,7 +27,7 @@ def richiesta_input_positivo(messaggio):
       valore_input=(input(messaggio))                                 #chiedo valore e sostituisco eventuali virgole con punti
       valore_input = valore_input.replace(',', '.')
 
-      if valore_input.replace('.','1',1).isdigit():   #questa strategia mio permette di controllare che l'input sia effettivamente una cifra (a meno del punto decimale)
+      if valore_input.replace('.','1',1).isdigit():   #questa strategia mi permette di controllare che l'input sia effettivamente una cifra (a meno del punto decimale)
         valore_input = float(valore_input)
         if valore_input>0:
           return valore_input
@@ -112,7 +112,7 @@ def parse_arguments():
        parser.parse_args() (Oggetto Namespace che contiene i valori degli argomenti in base alle scelte dell'utente)
     """
   
-    parser = argparse.ArgumentParser(description='Simulazione di uno scieme elettromagnetico.',
+    parser = argparse.ArgumentParser(description='Simulazione di uno sciame elettromagnetico.',
                                      usage      ='python3 main.py  --opzione')
     parser.add_argument('-s', '--stampa',    action='store_true',                    help="Mostra l'evoluzione dello sciame attraverso controlli intermedi")
     parser.add_argument('-g1', '--grafici1', action='store_true',                    help="Mostra i grafici sullo sviluppo longitudinale dello sciame")
@@ -182,9 +182,6 @@ def hist_funzione(ax,datax,titolo,titolox,range_istogramma):
          None
     La sua azione è quella di modificare ax
     """
-  #minimo=min(datax)
-  #massimo=max(datax)
-  #range_istogramma=(minimo-10,massimo+10)
 
     ax.hist(datax, bins='auto', range=range_istogramma, edgecolor='black',color='dimgray',alpha=0.8)
     ax.set_title(titolo, fontsize=16, fontweight='bold')
@@ -223,11 +220,10 @@ def scelta_tra_due_possibilità(messaggio,possibilità1,p1, possibilità2, p2, m
         print(messaggio_err)
 
 
-#in "calcolo statistica" prendo una lista anziché un array perché le operazioni di append (con cui ottengo le liste da dare come argomento alla funzione) su liste sono più rapide
 def calcolo_statistica(lista):
 
     """
-    Permette il calcolo di media, deviazione standard e deviazione standard della media di una lista.
+    Permette il calcolo di media, deviazione standard e deviazione standard della media di una lista di numeri.
     Parametri
     -----------
         lista (lista di float): lista di cui si vuole calcolare media, std e stdm
